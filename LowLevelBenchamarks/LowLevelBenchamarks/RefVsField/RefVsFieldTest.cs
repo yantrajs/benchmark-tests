@@ -31,7 +31,7 @@ namespace LowLevelBenchamarks.RefVsField
             this.FieldVar = new Variable { };
         }
 
-        [Benchmark]
+        // [Benchmark]
         public void TestRef()
         {
             ref var d = ref RefVar.Data;
@@ -41,7 +41,7 @@ namespace LowLevelBenchamarks.RefVsField
             }
         }
 
-        [Benchmark]
+        // [Benchmark]
         public void TestField()
         {
             var f = FieldVar;

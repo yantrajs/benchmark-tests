@@ -7,7 +7,9 @@ namespace LowLevelBenchamarks
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run(typeof(Program).Assembly);
+            var config = BenchmarkDotNet.Configs.ManualConfig.Create(BenchmarkDotNet.Configs.DefaultConfig.Instance)
+                .WithOption(BenchmarkDotNet.Configs.ConfigOptions.DisableOptimizationsValidator, true);
+            BenchmarkRunner.Run(typeof(Program).Assembly, config);
         }
     }
 }
