@@ -9,49 +9,54 @@ namespace LowLevelBenchamarks.ListVsSequence
     public class ListVsSequenceBenchmark
     {
 
-        public const int Max = 100;
+        public const int Max = 257;
 
-        public List<string> listReference = new List<string>();
-        public Sequence<string> sequenceReference = new Sequence<string>();
-        public List<(string,string)> listValue = new List<(string, string)>();
-        public Sequence<(string, string)> sequenceValue = new Sequence<(string, string)>();
+        public const string Data = "A";
 
         [Benchmark]
-        public void AllocateListReference()
+        public object AllocateListReference()
         {
+            var list = new List<string>();
             for (int i = 0; i < Max; i++)
             {
-                listReference.Add(i.ToString());
+                list.Add(Data);
             }
+            return list;
         }
 
         [Benchmark]
-        public void AllocateSequenceReference()
+        public object AllocateSequenceReference()
         {
+            var list = new Sequence<string>(4);
             for (int i = 0; i < Max; i++)
             {
-                sequenceReference.Add(i.ToString());
+                list.Add(Data);
             }
+            return list;
         }
 
         [Benchmark]
-        public void AllocateListValue()
+        public object AllocateListValue()
         {
+            var list = new List<(string, string)>();
+            var item = (Data, Data);
             for (int i = 0; i < Max; i++)
             {
-                var s = i.ToString();
-                listValue.Add((s,s));
+                list.Add(item);
             }
+            return list;
         }
 
         [Benchmark]
-        public void AllocateSequenceValue()
+        public object AllocateSequenceValue()
         {
+            var list = new Sequence<(string, string)>(4);
+            var item = (Data, Data);
             for (int i = 0; i < Max; i++)
             {
-                var s = i.ToString();
-                sequenceValue.Add((s, s));
+                list.Add(item);
             }
+            return list;
         }
     }
 }
