@@ -9,7 +9,7 @@ namespace LowLevelBenchamarks.ListVsSequence
     public class ListVsSequenceBenchmark
     {
 
-        public const int Max = 1000;
+        public const int Max = 1025;
 
         // public const string i.ToString() = "A";
 

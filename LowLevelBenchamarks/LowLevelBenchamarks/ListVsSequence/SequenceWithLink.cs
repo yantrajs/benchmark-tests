@@ -42,7 +42,7 @@ namespace LowLevelBenchamarks.ListVsSequence
             }
             else
             {
-                tailArray = new T[tailArray.Length * 2];
+                tailArray = new T[count * 2];
                 tailArray[0] = item;
                 tailCount = 1;
                 var t = new Node
