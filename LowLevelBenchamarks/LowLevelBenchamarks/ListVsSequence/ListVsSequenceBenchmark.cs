@@ -1,17 +1,17 @@
 ﻿using BenchmarkDotNet.Attributes;
-using System;
 using System.Collections.Generic;
 using System.Text;
 using YantraJS.Core;
 
 namespace LowLevelBenchamarks.ListVsSequence
 {
+
     public class ListVsSequenceBenchmark
     {
 
-        public const int Max = 257;
+        public const int Max = 1000;
 
-        public const string Data = "A";
+        // public const string i.ToString() = "A";
 
         [Benchmark]
         public object AllocateListReference()
@@ -19,7 +19,7 @@ namespace LowLevelBenchamarks.ListVsSequence
             var list = new List<string>();
             for (int i = 0; i < Max; i++)
             {
-                list.Add(Data);
+                list.Add(i.ToString());
             }
             return list;
         }
@@ -27,10 +27,10 @@ namespace LowLevelBenchamarks.ListVsSequence
         [Benchmark]
         public object AllocateSequenceReference()
         {
-            var list = new Sequence<string>(4);
+            var list = new Sequence<string>();
             for (int i = 0; i < Max; i++)
             {
-                list.Add(Data);
+                list.Add(i.ToString());
             }
             return list;
         }
@@ -39,10 +39,10 @@ namespace LowLevelBenchamarks.ListVsSequence
         public object AllocateListValue()
         {
             var list = new List<(string, string)>();
-            var item = (Data, Data);
             for (int i = 0; i < Max; i++)
             {
-                list.Add(item);
+                var item = i.ToString();
+                list.Add((item, item));
             }
             return list;
         }
@@ -50,11 +50,11 @@ namespace LowLevelBenchamarks.ListVsSequence
         [Benchmark]
         public object AllocateSequenceValue()
         {
-            var list = new Sequence<(string, string)>(4);
-            var item = (Data, Data);
+            var list = new Sequence<(string, string)>();
             for (int i = 0; i < Max; i++)
             {
-                list.Add(item);
+                var item = i.ToString();
+                list.Add((item,item));
             }
             return list;
         }
