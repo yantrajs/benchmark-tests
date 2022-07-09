@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
-    <PackageReference Include="YantraJS.ExpressionCompiler" Version="1.1.215" />
+    <PackageReference Include="YantraJS.ExpressionCompiler" Version="1.2.33" />
   </ItemGroup>
 
 </Project>
